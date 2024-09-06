@@ -1,4 +1,4 @@
-*{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
@@ -8,7 +8,6 @@
 html, body {
     height: 100%;
     margin: 0;
-    font-family: Arial, sans-serif;
     background-color: #f0f0f0;
 }
 
@@ -18,7 +17,7 @@ html, body {
     display: flex;
 }
 
-.background-container{
+.background-container {
     flex: 1.5;
     display: flex;
     justify-content: center;
@@ -27,38 +26,28 @@ html, body {
     background-size: cover;
 }
 
-.message-container{
+.message-container {
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    color: #fff; /* Change text color to contrast with background */
+    color: #fff;
     padding: 20px;
-    background-color: rgba(0, 0, 0, 0.5); /* Optional: add a semi-transparent background */
+    background-color: rgba(0, 0, 0, 0.5);
     border-radius: 10px;
     font-size: 2rem;
     margin: 0 10% 50% 10%;
 }
 
+/* Apply same styles for both login and register containers */
 .login-container, .register-container {
     flex: 1;
     background-color: lightgray;
     border-left: 2px solid black;
+    padding: 20px;
 }
 
-.login-container p, h1, .register-container h1, .register-container form {
-    margin-left: 10%;
-}
-
-.login-container h1, .register-container h1 {
-    margin-top: 10%;
-}
-
-.register-container {
-    display: none; /* Initially hidden */
-}
-
-.register-container form, .form-container {
+.form-container {
     display: flex;
     flex-direction: column;
     border: 2px solid black;
@@ -66,23 +55,21 @@ html, body {
     margin: 5% 10% 5% 10%;
     border-radius: 10px;
     background-color: white;
-    padding: 20px; /* Add padding inside the form */
+    padding: 20px;
 }
 
-.register-container form label, .form-container label {
+.form-container label {
     margin-left: 10px;
 }
 
-.register-container form input, .form-container input {
-    width: calc(100% - 20px); /* Full width minus padding */
-    padding: 10px; /* Padding for better aesthetics */
-    margin: 10px 0; /* Space between input fields */
-    box-sizing: border-box; /* Include padding in width */
+.form-container input {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin: 10px 0;
 }
 
-.register-container form button, .form-container button {
+.form-container button {
     margin-left: 10px;
-    display: inline-block;
     padding: 10px;
     background-color: skyblue;
     color: white;
@@ -91,72 +78,56 @@ html, body {
     cursor: pointer;
 }
 
-/* Media Queries for Mobile Devices (Max Width 767px) */
+/* Media Queries */
 @media (max-width: 767px) {
     .container {
-        flex-direction: column; /* Stack the containers vertically */
-        align-items: center; /* Center the containers */
+        flex-direction: column;
+        align-items: center;
     }
 
     .background-container {
-        flex: none; /* Disable flex on smaller screens */
-        width: 100%; /* Full width */
-        height: 200px; /* Smaller height */
-        background-size:cover;
-    }
-
-    .message-container {
-        font-size: 1.5rem; /* Reduce font size */
-        margin: 10px; /* Smaller margin */
+        width: 100%;
+        height: 200px;
     }
 
     .login-container, .register-container {
-        width: 100%; /* Smaller width */
-        margin: 10px 0; /* Add margin for separation */
-        border-left: none; /* Remove border */
-        border-top: 2px solid black; /* Add top border */
+        width: 100%;
+        margin: 10px 0;
+        border-left: none;
+        border-top: 2px solid black;
     }
 
-    .form-container, .register-container form {
-        font-size: 16pt; /* Smaller font size for inputs */
+    .form-container {
+        font-size: 16pt;
     }
 
-    .login-container p, .login-container h1, .register-container h1 {
-        margin-left: 0; /* Remove extra margin on smaller screens */
-        text-align: center; /* Center align text */
+    .login-container h1, .register-container h1 {
+        text-align: center;
     }
 }
 
-/* Media Queries for Tablets (Min Width 768px, Max Width 1024px) */
 @media (min-width: 768px) and (max-width: 1024px) {
     .container {
-        flex-direction: column; /* Stack the containers vertically */
+        flex-direction: column;
     }
 
     .background-container {
-        flex: none;
         width: 100%;
-        height: 300px; /* Adjust height for tablets */
-    }
-
-    .message-container {
-        font-size: 1.8rem;
-        margin: 20px;
+        height: 300px;
     }
 
     .login-container, .register-container {
         width: 100%;
-        margin: 20px auto; /* Center horizontally */
+        margin: 20px auto;
         border-left: none;
-        border-top: 2px solid black; /* Add top border for separation */
+        border-top: 2px solid black;
     }
 
-    .form-container, .register-container form {
+    .form-container {
         font-size: 18pt;
     }
 
-    .login-container p, .login-container h1, .register-container h1 {
-        margin-left: 0; /* Center align on tablets as well */
+    .login-container h1, .register-container h1 {
         text-align: center;
     }
 }

@@ -58,6 +58,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Login route
 app.post('/api/login', (req, res) => {
+    console.log("Login Request Body:", req.body); // Check what's coming in
+
     const { username, password } = req.body;
 
     const sql = 'SELECT * FROM users WHERE username = ?';
@@ -67,6 +69,8 @@ app.post('/api/login', (req, res) => {
             res.status(500).json({ success: false, message: 'Server error' });
             return;
         }
+
+        console.log("Database query results:", results); // Log the results of the query
 
         if (results.length === 0) {
             res.status(400).json({ success: false, message: 'User not found' });
@@ -83,18 +87,15 @@ app.post('/api/login', (req, res) => {
             }
 
             if (match) {
-                // Passwords match, create session
-                req.session.user = { id: user.id, username: user.username };
-
-                // Redirect to index.html after successful login
-                res.redirect('/index.html');
+                // Send a success response instead of redirecting on the server side
+                res.status(200).json({ success: true });
             } else {
-                // Passwords don't match
                 res.status(400).json({ success: false, message: 'Incorrect password' });
             }
         });
     });
 });
+
 
 // Registration route
 app.post('/api/register', (req, res) => {
