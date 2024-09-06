@@ -24,6 +24,19 @@ document.getElementById('login-form').addEventListener('submit', async (event) =
     }
 });
 
+document.getElementById("show-register").addEventListener("click", function(e) {
+    e.preventDefault(); // Prevent the default link behavior
+    
+    // Hide the login container and show the register container
+    document.querySelector('.login-container').style.display = 'none';
+    document.querySelector('.register-container').style.display = 'block';
+});
+
+document.getElementById('show-login').addEventListener('click', () => {
+    document.getElementById('login-form').style.display = 'block';
+    document.getElementById('register-header').style.display = 'none';
+    document.getElementById('register-form').style.display = 'none';
+});
 
 document.getElementById('register-form').addEventListener('submit', async (event) => {
     event.preventDefault();

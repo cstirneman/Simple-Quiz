@@ -21,17 +21,17 @@ app.use(session({
 
 // Set up MySQL connection
 const db = mysql.createConnection({
-    host: 'database-1.cte20oso261j.us-east-2.rds.amazonaws.com',
+    host: 'database-1.clq6u2g8sgao.us-east-1.rds.amazonaws.com',
     port: 3306,
-    user: 'cstirneman',
+    user: 'admin',
     password: 'Cardinals12!',
-    database: 'database-1'
+    database: 'quiz_app'
 });
 
 db.connect((err) => {
     if (err) {
         console.error('Error connecting to the database:', err);
-        return;
+        return; // stop further execution if DB connection fails
     }
     console.log('Connected to the MySQL database');
 });
