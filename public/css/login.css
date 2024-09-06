@@ -78,11 +78,16 @@ html, body {
     cursor: pointer;
 }
 
-/* Media Queries */
+/* Media Queries for phones */
 @media (max-width: 767px) {
     .container {
         flex-direction: column;
         align-items: center;
+    }
+
+    .message-container {
+        font-size: 1.5rem;
+        margin: 10% 10% 10% 10%;
     }
 
     .background-container {
@@ -106,9 +111,15 @@ html, body {
     }
 }
 
+/* Media Queries for tablets */
 @media (min-width: 768px) and (max-width: 1024px) {
     .container {
         flex-direction: column;
+    }
+
+    .message-container {
+        font-size: 2.5rem;
+        margin: 10% 10% 10% 10%;
     }
 
     .background-container {
