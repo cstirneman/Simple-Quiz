@@ -21,11 +21,11 @@ app.use(session({
 
 // Set up MySQL connection
 const db = mysql.createConnection({
-    host: 'localhost',
+    host: 'database-1.cte20oso261j.us-east-2.rds.amazonaws.com',
     port: 3306,
-    user: 'root',
+    user: 'cstirneman',
     password: 'Cardinals12!',
-    database: 'quiz_app'
+    database: 'database-1'
 });
 
 db.connect((err) => {
