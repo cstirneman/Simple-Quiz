@@ -1,4 +1,4 @@
-*{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
@@ -8,7 +8,6 @@
 html, body {
     height: 100%;
     margin: 0;
-    font-family: Arial, sans-serif;
     background-color: #f0f0f0;
 }
 
@@ -18,7 +17,7 @@ html, body {
     display: flex;
 }
 
-.background-container{
+.background-container {
     flex: 1.5;
     display: flex;
     justify-content: center;
@@ -27,31 +26,25 @@ html, body {
     background-size: cover;
 }
 
-.message-container{
+.message-container {
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    color: #fff; /* Change text color to contrast with background */
+    color: #fff;
     padding: 20px;
-    background-color: rgba(0, 0, 0, 0.5); /* Optional: add a semi-transparent background */
+    background-color: rgba(0, 0, 0, 0.5);
     border-radius: 10px;
     font-size: 2rem;
     margin: 0 10% 50% 10%;
 }
 
-.login-container{
+/* Apply same styles for both login and register containers */
+.login-container, .register-container {
     flex: 1;
     background-color: lightgray;
     border-left: 2px solid black;
-}
-
-.login-container p, h1{
-    margin-left: 10%;
-}
-
-.login-container h1{
-    margin-top: 10%;
+    padding: 20px;
 }
 
 .form-container {
@@ -62,27 +55,90 @@ html, body {
     margin: 5% 10% 5% 10%;
     border-radius: 10px;
     background-color: white;
-    padding: 20px; /* Add padding inside the form */
+    padding: 20px;
 }
 
-.form-container label{
+.form-container label {
     margin-left: 10px;
 }
 
 .form-container input {
-    width: calc(100% - 20px); /* Full width minus padding */
-    padding: 10px; /* Padding for better aesthetics */
-    margin: 10px 0; /* Space between input fields */
-    box-sizing: border-box; /* Include padding in width */
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin: 10px 0;
 }
 
 .form-container button {
     margin-left: 10px;
-    display: inline-block;
     padding: 10px;
     background-color: skyblue;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+}
+
+/* Media Queries for phones */
+@media (max-width: 767px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .message-container {
+        font-size: 1.5rem;
+        margin: 10% 10% 10% 10%;
+    }
+
+    .background-container {
+        width: 100%;
+        height: 200px;
+    }
+
+    .login-container, .register-container {
+        width: 100%;
+        margin: 10px 0;
+        border-left: none;
+        border-top: 2px solid black;
+    }
+
+    .form-container {
+        font-size: 16pt;
+    }
+
+    .login-container h1, .register-container h1 {
+        text-align: center;
+    }
+}
+
+/* Media Queries for tablets */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .message-container {
+        font-size: 2.5rem;
+        margin: 10% 10% 10% 10%;
+    }
+
+    .background-container {
+        width: 100%;
+        height: 300px;
+    }
+
+    .login-container, .register-container {
+        width: 100%;
+        margin: 20px auto;
+        border-left: none;
+        border-top: 2px solid black;
+    }
+
+    .form-container {
+        font-size: 18pt;
+    }
+
+    .login-container h1, .register-container h1 {
+        text-align: center;
+    }
 }
