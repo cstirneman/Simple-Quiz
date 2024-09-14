@@ -147,7 +147,7 @@ function handleFinishButton() {
     };
 
     // Save the new quiz to the database via API call
-    fetch('https://your-backend-service.onrender.com/api/quizzes', {
+    fetch('/api/quizzes', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

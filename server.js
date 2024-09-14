@@ -4,19 +4,12 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const path = require('path');
 const session = require('express-session');
-const bcrypt = require('bcryptjs');
+const bcrypt = require('bcrypt');
 const app = express();
 const port = 3000;
 
 // Middleware
-const corsOptions = {
-    origin: 'https://simple-quiz.onrender.com', // Allow only your frontend domain
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    credentials: true, // Allow credentials (for cookies, sessions)
-    optionsSuccessStatus: 204 // Some legacy browsers (IE11) might choke on 204
-  };
-  
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(bodyParser.json());
 
 // Session management
@@ -28,9 +21,9 @@ app.use(session({
 
 // Set up MySQL connection
 const db = mysql.createConnection({
-    host: 'database-1.clq6u2g8sgao.us-east-1.rds.amazonaws.com',
+    host: 'localhost',
     port: 3306,
-    user: 'admin',
+    user: 'root',
     password: 'Cardinals12!',
     database: 'quiz_app'
 });
@@ -38,7 +31,7 @@ const db = mysql.createConnection({
 db.connect((err) => {
     if (err) {
         console.error('Error connecting to the database:', err);
-        return; // stop further execution if DB connection fails
+        return;
     }
     console.log('Connected to the MySQL database');
 });
@@ -65,8 +58,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Login route
 app.post('/api/login', (req, res) => {
-    console.log("Login Request Body:", req.body); // Check what's coming in
-
     const { username, password } = req.body;
 
     const sql = 'SELECT * FROM users WHERE username = ?';
@@ -76,8 +67,6 @@ app.post('/api/login', (req, res) => {
             res.status(500).json({ success: false, message: 'Server error' });
             return;
         }
-
-        console.log("Database query results:", results); // Log the results of the query
 
         if (results.length === 0) {
             res.status(400).json({ success: false, message: 'User not found' });
@@ -94,15 +83,18 @@ app.post('/api/login', (req, res) => {
             }
 
             if (match) {
-                // Send a success response instead of redirecting on the server side
-                res.status(200).json({ success: true });
+                // Passwords match, create session
+                req.session.user = { id: user.id, username: user.username };
+
+                // Redirect to index.html after successful login
+                res.redirect('/index.html');
             } else {
+                // Passwords don't match
                 res.status(400).json({ success: false, message: 'Incorrect password' });
             }
         });
     });
 });
-
 
 // Registration route
 app.post('/api/register', (req, res) => {
