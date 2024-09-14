@@ -9,9 +9,14 @@ const app = express();
 const port = 3000;
 
 // Middleware
-app.use(cors({
-    origin: 'https://simple-quiz.onrender.com' // Allow this origin
-  }));
+const corsOptions = {
+    origin: 'https://simple-quiz.onrender.com', // Allow only your frontend domain
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true, // Allow credentials (for cookies, sessions)
+    optionsSuccessStatus: 204 // Some legacy browsers (IE11) might choke on 204
+  };
+  
+app.use(cors(corsOptions));
 app.use(bodyParser.json());
 
 // Session management
