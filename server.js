@@ -10,9 +10,8 @@ const port = 3000;
 
 // Middleware
 app.use(cors({
-    origin: 'https://simple-quiz.onrender.com', // Allow requests from your frontend
-    credentials: true
-}));
+    origin: 'https://simple-quiz.onrender.com' // Allow this origin
+  }));
 app.use(bodyParser.json());
 
 // Session management
